@@ -1,12 +1,18 @@
 # Ninja
-a simple node container for modern front-end development
 
-## Excute Jinja2 Template
++ **Mode:** Developing
++ **Intro:** A simple node container for modern front-end development
 
-## Exchange JSON Fragments
+## Features
+### Excute Jinja2 Template
 
-## A Cute Routing System
+### Exchange JSON Fragments
 
-## High Scalability for Front-End Development
+### A Cute Routing System
 
-## {% include 'Python-Shell' %}
+### High Scalability for Front-End Development
+
+### {% include 'Python-Shell' %}
+
+## License
+MIT 2016@MuxiStudio: check LICENSE file for detail.

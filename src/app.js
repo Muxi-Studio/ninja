@@ -9,6 +9,7 @@ var app = express();
 var fs = require('fs');
 var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpack = require("webpack");
+var chalk = require("chalk");
 
 module.exports = function(template, mock, webpackFlag) {
 
@@ -37,6 +38,15 @@ module.exports = function(template, mock, webpackFlag) {
   }
   // start server
   app.listen(3000, function() {
-    console.log('Ninja Power on port http://localhost:3000');
+    
+    console.log(chalk.blue(" __    _  ___   __    _      ___  _______ "));
+    console.log(chalk.blue("|  |  | ||   | |  |  | |    |   ||   _   |"));
+    console.log(chalk.blue("|   |_| ||   | |   |_| |    |   ||  |_|  |"));
+    console.log(chalk.blue("|       ||   | |       |    |   ||       |"));
+    console.log(chalk.blue("|  _    ||   | |  _    | ___|   ||       |"));
+    console.log(chalk.blue("| | |   ||   | | | |   ||       ||   _   |"));
+    console.log(chalk.blue("|_|  |__||___| |_|  |__||_______||__| |__|"));
+
+    console.log(chalk.yellow('Ninja Power on port http://localhost:3000'));
   });
 };

@@ -7,3 +7,4 @@ var conf = require(process.cwd() + '/ninja.conf');
 // bootstrap
 bootstrap(conf.template, conf.mock, conf.webpack);
 
+

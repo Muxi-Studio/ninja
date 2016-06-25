@@ -1,0 +1,27 @@
+{
+  "name": "ninja",
+  "version": "1.0.0",
+  "description": "A container for front-end development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muxi-Studio/ninja.git"
+  },
+  "author": "Muxistudio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Muxi-Studio/ninja/issues"
+  },
+  "homepage": "https://github.com/Muxi-Studio/ninja#readme",
+  "bin": {
+    "ninja": "./index.js"
+  },
+  "dependencies": {
+    "consolidate": "^0.14.1",
+    "express": "^4.14.0",
+    "swig": "^1.4.2"
+  }
+}

@@ -5,5 +5,5 @@ var bootstrap = require("./src/app");
 var conf = require(process.cwd() + '/ninja.conf');
 
 // bootstrap
-bootstrap(conf.template, conf.mock);
+bootstrap(conf.template, conf.mock, conf.webpack);
 

@@ -21,9 +21,15 @@ module.exports = function(template, mock, webpackFlag) {
 
   // map routes
   mock.routes.map(function(obj, i) {
-    app.get(obj.endpoint, function(req, res) {
-      res.render(obj.template, mock.data[obj.name])
-    });
+    if (obj.async) {
+      app.get(obj.endpoint, function(req, res) {
+        res.send(mock.data[obj.name])
+      });
+    } else {
+      app.get(obj.endpoint, function(req, res) {
+        res.render(obj.template, mock.data[obj.name])
+      });
+    }
   })
 
   if (webpackFlag) {
@@ -38,7 +44,7 @@ module.exports = function(template, mock, webpackFlag) {
   }
   // start server
   app.listen(3000, function() {
-    
+
     console.log(chalk.blue(" __    _  ___   __    _      ___  _______ "));
     console.log(chalk.blue("|  |  | ||   | |  |  | |    |   ||   _   |"));
     console.log(chalk.blue("|   |_| ||   | |   |_| |    |   ||  |_|  |"));

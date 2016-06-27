@@ -3,6 +3,7 @@
  *
  * bootstrap the express server
  */
+var request = require('request');
 var express = require('express');
 var cons = require('consolidate');
 var app = express();
@@ -11,7 +12,7 @@ var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpack = require("webpack");
 var chalk = require("chalk");
 
-module.exports = function(template, mock, webpackFlag) {
+module.exports = function(template, mock, webpackFlag, proxyConf) {
 
   // configure app
   app.engine('html', cons[template]);
@@ -41,6 +42,34 @@ module.exports = function(template, mock, webpackFlag) {
         colors: true
       }
     }))
+  }
+
+  if (proxyConf) {
+    app.use(proxyConf.route, function(req, res) {
+      //modify the url in any way you want
+      var url = proxyConf.origin + proxyConf.route + req.url;
+      var r;
+      if (req.method === 'POST') {
+        r = request.post({
+          uri: url,
+          headers:res.headers,
+          json: req.body
+        });
+      } else if (req.method === 'PUT') {
+        r = request.put({
+          uri: url,
+          headers:res.headers,
+          json: req.body
+        });
+      } else {
+        r = request({
+          url: url,
+          headers:res.headers
+        });
+      }
+
+      r.pipe(res);
+    });
   }
   // start server
   app.listen(3000, function() {

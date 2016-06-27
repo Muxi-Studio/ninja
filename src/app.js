@@ -23,6 +23,12 @@ module.exports = function(template, mock, webpackFlag, proxyConf) {
   // map routes
   mock.routes.map(function(obj, i) {
     if (obj.async) {
+      if (proxyConf) {
+        var reg = new RegExp(proxyConf.route);
+        if (reg.test(obj.endpoint)) {
+					return;
+        }
+      }
       app.get(obj.endpoint, function(req, res) {
         res.send(mock.data[obj.name])
       });
@@ -52,19 +58,19 @@ module.exports = function(template, mock, webpackFlag, proxyConf) {
       if (req.method === 'POST') {
         r = request.post({
           uri: url,
-          headers:res.headers,
+          headers: res.headers,
           json: req.body
         });
       } else if (req.method === 'PUT') {
         r = request.put({
           uri: url,
-          headers:res.headers,
+          headers: res.headers,
           json: req.body
         });
       } else {
         r = request({
           url: url,
-          headers:res.headers
+          headers: res.headers
         });
       }
 

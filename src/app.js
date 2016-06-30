@@ -3,6 +3,8 @@
  *
  * bootstrap the express server
  */
+
+// deps
 var request = require('request');
 var express = require('express');
 var cons = require('consolidate');
@@ -12,13 +14,20 @@ var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpack = require("webpack");
 var chalk = require("chalk");
 
-module.exports = function(template, mock, webpackFlag, proxyConf) {
+// modules
+var socket = require('./socket');
 
+module.exports = function(template, mock, webpackFlag, proxyConf) {
+ 
   // configure app
   app.engine('html', cons[template]);
   app.set('view engine', 'html');
   app.set('views', process.cwd() + '/template');
   var mock = JSON.parse(fs.readFileSync(process.cwd() + mock, 'utf8'));
+
+  app.use(require('connect-inject')({
+    snippet: "<script src='http://localhost:5000/client.js'></script><script src='http://localhost:5000/livereload.js'></script>"
+  }));
 
   // map routes
   mock.routes.map(function(obj, i) {
@@ -26,18 +35,19 @@ module.exports = function(template, mock, webpackFlag, proxyConf) {
       if (proxyConf) {
         var reg = new RegExp(proxyConf.route);
         if (reg.test(obj.endpoint)) {
-					return;
+          return;
         }
       }
       app.get(obj.endpoint, function(req, res) {
         res.send(mock.data[obj.name])
       });
     } else {
-      app.get(obj.endpoint, function(req, res) {
+      app.get(obj.endpoint, function(req, res, next) {
         res.render(obj.template, mock.data[obj.name])
       });
     }
   })
+
 
   if (webpackFlag) {
     var config = require(process.cwd() + '/webpack.dev.config')
@@ -77,6 +87,9 @@ module.exports = function(template, mock, webpackFlag, proxyConf) {
       r.pipe(res);
     });
   }
+
+  socket();
+
   // start server
   app.listen(3000, function() {
 

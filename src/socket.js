@@ -10,11 +10,11 @@ module.exports = function() {
   server.listen(5000);
 
   app.get('/livereload.js', function(req, res) {
-    res.sendfile(__dirname + '/livereload.js');
+    res.sendFile(__dirname + '/livereload.js');
   })
 
   app.get('/client.js', function(req, res) {
-    res.sendfile(__dirname + '/lib/socket.client.js');
+    res.sendFile(__dirname + '/lib/socket.client.js');
   })
 
   io.on('connection', function(socket) {

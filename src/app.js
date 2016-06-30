@@ -11,6 +11,7 @@ var cons = require('consolidate');
 var app = express();
 var fs = require('fs');
 var webpackDevMiddleware = require("webpack-dev-middleware");
+var webpackHotMiddleware = require('webpack-hot-middleware');
 var webpack = require("webpack");
 var chalk = require("chalk");
 
@@ -18,7 +19,7 @@ var chalk = require("chalk");
 var socket = require('./socket');
 
 module.exports = function(template, mock, webpackFlag, proxyConf) {
- 
+
   // configure app
   app.engine('html', cons[template]);
   app.set('view engine', 'html');
@@ -57,6 +58,9 @@ module.exports = function(template, mock, webpackFlag, proxyConf) {
       stats: {
         colors: true
       }
+    }))
+    app.use(webpackHotMiddleware(compiler, {
+      log: console.log
     }))
   }
 

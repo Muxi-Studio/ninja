@@ -14,6 +14,7 @@ var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpackHotMiddleware = require('webpack-hot-middleware');
 var webpack = require("webpack");
 var chalk = require("chalk");
+var opn = require('opn');
 
 // modules
 var socket = require('./socket');
@@ -108,5 +109,6 @@ module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, tem
     console.log(chalk.blue("|_|  |__||___| |_|  |__||_______||__| |__|"));
 
     console.log(chalk.yellow('Ninja Power on port http://localhost:3000'));
+    opn('http://localhost:3000', {app: ['google chrome']});
   });
 };

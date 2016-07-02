@@ -19,7 +19,7 @@ var opn = require('opn');
 // modules
 var socket = require('./socket');
 
-module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, templateDir) {
+module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, templateDir, port, browser) {
 
   // configure app
   app.engine('html', cons[template]);
@@ -98,7 +98,7 @@ module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, tem
   socket();
 
   // start server
-  app.listen(3000, function() {
+  app.listen(port, function() {
 
     console.log(chalk.blue(" __    _  ___   __    _      ___  _______ "));
     console.log(chalk.blue("|  |  | ||   | |  |  | |    |   ||   _   |"));
@@ -108,7 +108,7 @@ module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, tem
     console.log(chalk.blue("| | |   ||   | | | |   ||       ||   _   |"));
     console.log(chalk.blue("|_|  |__||___| |_|  |__||_______||__| |__|"));
 
-    console.log(chalk.yellow('Ninja Power on port http://localhost:3000'));
-    opn('http://localhost:3000', {app: ['google chrome']});
+    console.log(chalk.yellow('Ninja Power on port http://localhost:' + port));
+    opn('http://localhost:' + port, {app: [browser]});
   });
 };

@@ -18,12 +18,12 @@ var chalk = require("chalk");
 // modules
 var socket = require('./socket');
 
-module.exports = function(template, mock, webpackFlag, proxyConf) {
+module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, templateDir) {
 
   // configure app
   app.engine('html', cons[template]);
   app.set('view engine', 'html');
-  app.set('views', process.cwd() + '/template');
+  app.set('views', process.cwd() + templateDir);
   var mock = JSON.parse(fs.readFileSync(process.cwd() + mock, 'utf8'));
 
   app.use(require('connect-inject')({
@@ -62,6 +62,8 @@ module.exports = function(template, mock, webpackFlag, proxyConf) {
     app.use(webpackHotMiddleware(compiler, {
       log: console.log
     }))
+  }else {
+    app.use(express.static(process.cwd() + staticDir));
   }
 
   if (proxyConf) {

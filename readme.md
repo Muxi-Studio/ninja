@@ -1,26 +1,30 @@
 # Ninja
 
-+ **Mode:** Developing
-+ **Intro:** A simple node container for modern front-end development
+Ninja powered front-end development server. 
 
 ## Features
-+ **Excute Jinja2 Template**
-+ **Exchange JSON Fragments**
-+ **A Cute Routing System**
-+ **High Scalability for Front-End Development**
-+ **{% include 'Python-Shell' %}**
++ **Generate routes automatically**
++ **Interpret Nodejs template**
++ **Jinja syntax supported(swig)**
++ **Livereload for HTML&CSS**
++ **Proxy mode**
++ **Webpack compatible**
 
-## Architecture
+
+## Install
 ```
-<html>
-<body>
-    {{ jinja2 template }}
-    {% include 'python-shell' %}
-    {{ a routing system }}
-    {{ json data transmission}}
-    {{ the morden front-end world }}
-</body>
-</html>
+npm install -g ninja_cli
 ```
+
+## Configue using CLI 
+
+## Configue using file
+
+## Options
+
+## Examples
+
+Take a look at the `examples` folder.
+
 ## License
 MIT 2016@MuxiStudio: check LICENSE file for detail.

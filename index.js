@@ -3,7 +3,12 @@ var bootstrap = require("./src/app");
 var program = require('commander');
 
 // load conf
-var file = require(process.cwd() + '/ninja.conf');
+try {
+	var file = require(process.cwd() + '/ninja.conf');
+} catch (e) {
+	
+}
+
 
 program
   .option('-p, --port [port]', 'Set the port of the server, defalut set to 3000')

@@ -15,6 +15,7 @@ var webpackHotMiddleware = require('webpack-hot-middleware');
 var webpack = require("webpack");
 var chalk = require("chalk");
 var opn = require('opn');
+var request = require('superagent');
 
 // modules
 var socket = require('./socket');
@@ -25,7 +26,19 @@ module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, tem
   app.engine('html', cons[template]);
   app.set('view engine', 'html');
   app.set('views', process.cwd() + templateDir);
-  var mock = JSON.parse(fs.readFileSync(process.cwd() + mock, 'utf8'));
+
+  if ( /https?:\/\//.test(mock) ) {
+    request('GET', mock).then(function(data) {
+      var mock = data;
+    }, function(err) {
+      console.log( err );
+      console.log( 'Error, please retry' );
+      process.exit(1);
+    });
+  }else {
+    var mock = JSON.parse(fs.readFileSync(process.cwd() + mock, 'utf8'));
+  }
+  
 
   app.use(require('connect-inject')({
     snippet: "<script src='http://localhost:5000/client.js'></script><script src='http://localhost:5000/livereload.js'></script>"

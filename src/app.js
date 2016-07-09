@@ -64,7 +64,6 @@ module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, tem
     }
   })
 
-
   if (webpackFlag) {
     var config = require(process.cwd() + '/webpack.dev.config')
     var compiler = webpack(config)
@@ -109,7 +108,7 @@ module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, tem
     });
   }
 
-  socket();
+  socket(templateDir, staticDir, webpackFlag);
 
   // start server
   app.listen(port, function() {

@@ -1,6 +1,6 @@
 var fs = require('fs')
 
-module.exports = function() {
+module.exports = function(templateDir, staticDir, webpackFlag) {
 
   // start the socket server
   var app = require('express')();
@@ -22,9 +22,23 @@ module.exports = function() {
   });
 
   // watch file changes
-  fs.watch(process.cwd() + '/template', {
+  fs.watch(process.cwd() + templateDir, {
     encoding: 'utf8'
   }, (event, filename) => {
-    io.emit('fileChange', {});
+    if (/html/.test(filename)) {
+      io.emit('htmlChange', {});
+    } 
   });
+
+  if (!webpackFlag && staticDir) {
+    fs.watch(process.cwd() + staticDir, {
+      encoding: 'utf8'
+    }, (event, filename) => {
+      console.log('css change')
+      if (/css/.test(filename)) {
+        io.emit('cssChange', {});
+      }
+    });
+  }
+
 }

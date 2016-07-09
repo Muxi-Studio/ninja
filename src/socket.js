@@ -23,7 +23,8 @@ module.exports = function(templateDir, staticDir, webpackFlag) {
 
   // watch file changes
   fs.watch(process.cwd() + templateDir, {
-    encoding: 'utf8'
+    encoding: 'utf8',
+    recursive: true
   }, (event, filename) => {
     if (/html/.test(filename)) {
       io.emit('htmlChange', {});
@@ -32,7 +33,8 @@ module.exports = function(templateDir, staticDir, webpackFlag) {
 
   if (!webpackFlag && staticDir) {
     fs.watch(process.cwd() + staticDir, {
-      encoding: 'utf8'
+      encoding: 'utf8',
+      recursive: true
     }, (event, filename) => {
       console.log('css change')
       if (/css/.test(filename)) {

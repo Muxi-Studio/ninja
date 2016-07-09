@@ -1,6 +1,6 @@
 (function() {
   var socket = io.connect('http://localhost:5000');
-  var head = document.getElementsByTagName('head');
+  var head = document.getElementsByTagName('head')[0];
 	var links = document.getElementsByTagName('link');
 
 	function reloadCSS() {

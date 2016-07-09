@@ -13,6 +13,12 @@
 			"async": false
 		},
 		{
+			"name": "course",
+			"endpoint": "/course",
+			"template": "home",
+			"async": false
+		},
+		{
 			"name": "api.courses",
 			"endpoint": "/api/v1.0/courses",
 			"async": true
@@ -24,6 +30,9 @@
 		},
 		"second":{
 			"title": "second"
+		},
+		"course":{
+			"title": "我是course页面哈哈哈哈哈"
 		},
 		"api.courses":{
 			"title": "second"

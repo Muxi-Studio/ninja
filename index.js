@@ -31,8 +31,6 @@ program
   .parse(process.argv);
 
 
-console.log(typeof program.webpack, program.webpack)
-
 var conf = {};
 conf.port = (program.prot || file.port) || 3000;
 conf.template = (program.template || file.template) || 'swig';

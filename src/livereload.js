@@ -16,7 +16,6 @@
   });
 
   socket.on('cssChange', function(data) {
-  	console.log('cssChange!')
     reloadCSS();
   });
 

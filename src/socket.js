@@ -36,7 +36,6 @@ module.exports = function(templateDir, staticDir, webpackFlag) {
       encoding: 'utf8',
       recursive: true
     }, (event, filename) => {
-      console.log('css change')
       if (/css/.test(filename)) {
         io.emit('cssChange', {});
       }

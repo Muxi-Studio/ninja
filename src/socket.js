@@ -40,6 +40,15 @@ module.exports = function(templateDir, staticDir, webpackFlag) {
         io.emit('cssChange', {});
       }
     });
+
+    fs.watch(process.cwd() + staticDir, {
+      encoding: 'utf8',
+      recursive: true
+    }, (event, filename) => {
+      if (/js/.test(filename)) {
+        io.emit('jsChange', {});
+      }
+    });
   }
 
 }

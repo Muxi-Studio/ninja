@@ -1,3 +1,3 @@
-module.exports = function() {
+(function(){
 	console.log("Test JavaScript");
-}
+})();

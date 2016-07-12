@@ -6,6 +6,6 @@ module.exports = {
 		route: "/api",
 		origin: "http://xueer.muxixyz.com"
 	},
-	staticDir: "/static",
+	staticDir: "/",
 	templateDir: "/template",
 }

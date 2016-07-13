@@ -96,6 +96,9 @@ You need open two Command line process,respectively run:
 
 ``` bash
 $ gulp
+```
+
+``` bash
 $ ninja
 ```
 

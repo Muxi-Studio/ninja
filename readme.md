@@ -68,5 +68,36 @@ module.exports = {
 
 Take a look at the `examples` folder.
 
+### Under the ninja_webpack_example:
+
+**install**
+``` bash
+$ npm install
+```
+
+**run**
+``` bash
+$ ninja
+```
+
+### Under the ninja_webpack_example:
+
+**install**
+``` bash
+$ npm install
+```
+
+**run**
+
+You need open two Command line process,respectively run:
+
+``` bash
+$ gulp
+```
+
+``` bash
+$ ninja
+```
+
 ## License
 MIT 2016@MuxiStudio: check LICENSE file for detail.

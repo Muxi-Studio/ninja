@@ -68,7 +68,7 @@ module.exports = {
 
 Take a look at the `examples` folder.
 
-1.Under the ninja_webpack_example:
+### Under the ninja_webpack_example:
 
 **install**
 ``` bash
@@ -80,7 +80,7 @@ $ npm install
 $ ninja
 ```
 
-2.Under the ninja_webpack_example:
+### Under the ninja_webpack_example:
 
 **install**
 ``` bash

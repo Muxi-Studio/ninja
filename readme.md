@@ -6,7 +6,7 @@ Ninja powered front-end development server.
 + **Generate routes automatically**
 + **Interpret Nodejs template**
 + **Jinja syntax supported(swig)**
-+ **Livereload for HTML&CSS**
++ **Livereload for HTML&CSS&JS**
 + **Proxy mode**
 + **Webpack compatible**
 
@@ -68,36 +68,16 @@ module.exports = {
 
 Take a look at the `examples` folder.
 
-### Under the ninja_webpack_example:
+## Change Log
 
-**install**
-``` bash
-$ npm install
-```
+###v0.2 2016-07-13
 
-**run**
-``` bash
-$ ninja
-```
++ add example for webpack&gulp users
++ support CSS&Javascript livereload
 
-### Under the ninja_webpack_example:
+###v0.1 2016-07-02
 
-**install**
-``` bash
-$ npm install
-```
-
-**run**
-
-You need open two Command line process,respectively run:
-
-``` bash
-$ gulp
-```
-
-``` bash
-$ ninja
-```
++ initial commit
 
 ## License
-MIT 2016@MuxiStudio: check LICENSE file for detail.
+MIT 2016@MuxiStudio: check `LICENSE` file for detail.

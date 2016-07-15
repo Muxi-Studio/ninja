@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+'use strict'
+
+var program = require('commander');
+var ninjaStart = require('../ninja-start');
+var ninjaInit = require('../ninja-init');
+
+program
+  .usage('<command> [options]')
+  .version(require('../../package.json').version);
+
+/**
+ * ninja start
+ */
+program
+  .command('start')
+  .alias('s')
+  .description('Start Ninja dev server')
+  .action(function(){
+    	ninjaStart();
+  })
+
+/**
+ * ninja init
+ */
+program
+  .command('init')
+  .alias('i')
+  .description('Scaffolding webpack or gulp based project')
+  .action(function(){
+    	 ninjaInit();
+  })
+
+program.parse(process.argv);
+
+if (!process.argv.slice(2).length) {
+  program.outputHelp()
+}

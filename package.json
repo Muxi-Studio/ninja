@@ -2,7 +2,7 @@
   "name": "ninja_cli",
   "version": "0.2.0",
   "description": "Ninja powered front-end development server.",
-  "main": "index.js",
+  "main": "./src/bin/ninja",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/Muxi-Studio/ninja#readme",
   "bin": {
-    "ninja": "./index.js"
+    "ninja": "./src/bin/ninja"
   },
   "dependencies": {
     "chalk": "^1.1.3",

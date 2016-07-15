@@ -1,5 +1,7 @@
+'use strict'
+
 /**
- * app.js
+ * ninja-start.js
  *
  * bootstrap the express server
  */
@@ -13,31 +15,30 @@ var fs = require('fs');
 var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpackHotMiddleware = require('webpack-hot-middleware');
 var webpack = require("webpack");
+var logger = require("./util/logger");
+var conf = require('./util/config');
 var chalk = require("chalk");
 var opn = require('opn');
 
 // modules
 var socket = require('./socket');
 
-module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, templateDir, port, browser) {
-
+module.exports = function() {
   // configure app
-  app.engine('html', cons[template]);
+  app.engine('html', cons[conf.template]);
   app.set('view engine', 'html');
-  app.set('views', process.cwd() + templateDir);
+  app.set('views', process.cwd() + conf.templateDir);
 
-  if (/https?:\/\//.test(mock)) {
-    request(mock, function(error, response, data) {
+  if (/https?:\/\//.test(conf.mock)) {
+    request(conf.mock, function(error, response, data) {
       if (!error && response.statusCode == 200) {
         var mock = data;
       } else {
-        console.log(error);
-        console.log('Error, please retry');
-        process.exit(1);
+        logger.error(error);
       }
     })
   } else {
-    var mock = JSON.parse(fs.readFileSync(process.cwd() + mock, 'utf8'));
+    var mock = JSON.parse(fs.readFileSync(process.cwd() + conf.mock, 'utf8'));
   }
 
 
@@ -48,8 +49,8 @@ module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, tem
   // map routes
   mock.routes.map(function(obj, i) {
     if (obj.async) {
-      if (proxyConf) {
-        var reg = new RegExp(proxyConf.route);
+      if (conf.proxyConf) {
+        var reg = new RegExp(conf.proxyConf.route);
         if (reg.test(obj.endpoint)) {
           return;
         }
@@ -64,7 +65,7 @@ module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, tem
     }
   })
 
-  if (webpackFlag) {
+  if (conf.webpackFlag) {
     var config = require(process.cwd() + '/webpack.dev.config')
     var compiler = webpack(config)
     app.use(webpackDevMiddleware(compiler, {
@@ -77,13 +78,13 @@ module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, tem
       log: console.log
     }))
   } else {
-    app.use(express.static(process.cwd() + staticDir));
+    app.use(express.static(process.cwd() + conf.staticDir));
   }
 
-  if (proxyConf) {
-    app.use(proxyConf.route, function(req, res) {
+  if (conf.proxyConf) {
+    app.use(conf.proxyConf.route, function(req, res) {
       //modify the url in any way you want
-      var url = proxyConf.origin + proxyConf.route + req.url;
+      var url = conf.proxyConf.origin + conf.proxyConf.route + req.url;
       var r;
       if (req.method === 'POST') {
         r = request.post({
@@ -108,10 +109,10 @@ module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, tem
     });
   }
 
-  socket(templateDir, staticDir, webpackFlag);
+  socket(conf.templateDir, conf.staticDir, conf.webpackFlag);
 
   // start server
-  app.listen(port, function() {
+  app.listen(conf.port, function() {
 
     console.log(chalk.blue(" __    _  ___   __    _      ___  _______ "));
     console.log(chalk.blue("|  |  | ||   | |  |  | |    |   ||   _   |"));
@@ -121,9 +122,9 @@ module.exports = function(template, mock, webpackFlag, proxyConf, staticDir, tem
     console.log(chalk.blue("| | |   ||   | | | |   ||       ||   _   |"));
     console.log(chalk.blue("|_|  |__||___| |_|  |__||_______||__| |__|"));
 
-    console.log(chalk.yellow('Ninja Power on port http://localhost:' + port));
-    opn('http://localhost:' + port, {
-      app: [browser]
+    console.log(logger.log('Ninja Power on port http://localhost:' + conf.port, "yellow"));
+    opn('http://localhost:' + conf.port, {
+      app: [conf.browser]
     });
   });
 };

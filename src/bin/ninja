@@ -2,8 +2,8 @@
 'use strict'
 
 var program = require('commander');
-var ninjaStart = require('../ninja-start');
-var ninjaInit = require('../ninja-init');
+var ninjaStart = require('../lib/ninja-start');
+var ninjaInit = require('../lib/ninja-init');
 
 program
   .usage('<command> [options]')

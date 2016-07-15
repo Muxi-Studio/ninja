@@ -15,8 +15,8 @@ var fs = require('fs');
 var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpackHotMiddleware = require('webpack-hot-middleware');
 var webpack = require("webpack");
-var logger = require("./util/logger");
-var conf = require('./util/config');
+var logger = require("../util/logger");
+var conf = require('../util/config');
 var chalk = require("chalk");
 var opn = require('opn');
 
@@ -122,7 +122,7 @@ module.exports = function() {
     console.log(chalk.blue("| | |   ||   | | | |   ||       ||   _   |"));
     console.log(chalk.blue("|_|  |__||___| |_|  |__||_______||__| |__|"));
 
-    console.log(logger.log('Ninja Power on port http://localhost:' + conf.port, "yellow"));
+    logger.log('Ninja Power on port http://localhost:' + conf.port, "yellow");
     opn('http://localhost:' + conf.port, {
       app: [conf.browser]
     });

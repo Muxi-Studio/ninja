@@ -1,4 +1,5 @@
-var fs = require('fs')
+var fs = require('fs');
+var path = require("path");
 
 module.exports = function(templateDir, staticDir, webpackFlag) {
 
@@ -10,11 +11,11 @@ module.exports = function(templateDir, staticDir, webpackFlag) {
   server.listen(5000);
 
   app.get('/livereload.js', function(req, res) {
-    res.sendFile(__dirname + '/livereload.js');
+    res.sendFile(path.join(__dirname, '../', 'client/livereload.js'));
   })
 
   app.get('/client.js', function(req, res) {
-    res.sendFile(__dirname + '/lib/socket.client.js');
+    res.sendFile(path.join(__dirname, '../', 'client/socket.client.js'));
   })
 
   io.on('connection', function(socket) {

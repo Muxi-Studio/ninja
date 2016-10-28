@@ -4,6 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
+    'webpack-hot-middleware/client',
     path.resolve(__dirname, './index.js')
   ],
   output: {

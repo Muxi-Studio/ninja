@@ -48,6 +48,7 @@ module.exports = function() {
 
   // map routes
   mock.routes.map(function(obj, i) {
+    var method = obj.method || "get"
     if (obj.async) {
       if (conf.proxyConf) {
         var reg = new RegExp(conf.proxyConf.route);
@@ -55,11 +56,11 @@ module.exports = function() {
           return;
         }
       }
-      app.get(obj.endpoint, function(req, res) {
+      app[method](obj.endpoint, function(req, res) {
         res.send(mock.data[obj.name])
       });
     } else {
-      app.get(obj.endpoint, function(req, res, next) {
+      app[method](obj.endpoint, function(req, res, next) {
         res.render(obj.template, mock.data[obj.name])
       });
     }

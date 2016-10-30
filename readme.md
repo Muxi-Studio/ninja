@@ -70,6 +70,14 @@ Take a look at the `examples` folder.
 
 ## Change Log
 
+###v0.4 2016-10-30
+
++ add body-parser for express server, fix POST proxy body data missing case 
+
+###v0.3 2016-10-28
+
++ add HTTP method setting for mock API 
+
 ###v0.2 2016-07-13
 
 + add example for webpack&gulp users

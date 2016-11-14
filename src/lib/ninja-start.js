@@ -55,6 +55,7 @@ module.exports = function() {
   // map routes
   mock.routes.map(function(obj, i) {
     var method = obj.method || "get"
+    var getData = mock.data[obj.name]
     if (obj.async) {
       if (conf.proxyConf) {
         var reg = new RegExp(conf.proxyConf.route);
@@ -62,16 +63,31 @@ module.exports = function() {
           return;
         }
       }
-      app[method](obj.endpoint, function(req, res) {
-        res.send(mock.data[obj.name])
-      });
+      if (method === "get") {
+        app[method](obj.endpoint, function(req, res) {
+          var returnedData = getData
+          if (obj.queryKey) {
+            if (obj.queryKey.category && req.query[obj.queryKey.category]) {
+              returnedData = getData[req.query[obj.queryKey.category]]
+            }
+            if (obj.queryKey.count && !Array.isArray(getData) && req.query[obj.queryKey.count]) {
+              returnedData = new Array(Number(req.query[obj.queryKey.count])).fill(returnedData)
+            }
+          }
+          res.send(returnedData)
+        });
+      }else {
+        app[method](obj.endpoint, function(req, res) {
+          res.send(mock.data[obj.name])
+        });
+      }
     } else {
       app[method](obj.endpoint, function(req, res, next) {
         res.render(obj.template, mock.data[obj.name])
       });
     }
   })
-
+  
   if (conf.webpackFlag) {
     var config = require(process.cwd() + '/webpack.dev.config')
     var compiler = webpack(config)

@@ -90,11 +90,15 @@ Take a look at the `examples` folder.
 
 ## Super powered by Ninja
 
-### Xueer Mobile Web Version
+### [Xueer Mobile Web Version](https://github.com/Muxi-Studio/Xueer_Moblie)
 
 ![xueer](https://occc3ev3l.qnssl.com/Screen%20Shot%202016-11-14%20at%2010.35.51%20PM.png)
 
-### FECadamy
+### [Guisheng Mobile Web Version](https://github.com/Muxi-Studio/guisheng_fe)
+
+![](https://occc3ev3l.qnssl.com/Screen%20Shot%202016-11-14%20at%2010.50.23%20PM.png)
+
+### [FECademy](https://github.com/Muxi-Studio/Fecademy_fe)
 
 ![fecadamy](https://occc3ev3l.qnssl.com/Screen%20Shot%202016-11-14%20at%2010.35.03%20PM.png)
 

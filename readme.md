@@ -2,6 +2,7 @@
 
 Ninja powered front-end development server. 
 
+
 ## Features
 + **Generate routes automatically**
 + **Interpret Nodejs template**
@@ -86,6 +87,16 @@ Take a look at the `examples` folder.
 ###v0.1 2016-07-02
 
 + initial commit
+
+## Super powered by Ninja
+
+### Xueer Mobile Web Version
+
+![xueer](https://occc3ev3l.qnssl.com/Screen%20Shot%202016-11-14%20at%2010.35.51%20PM.png)
+
+### FECadamy
+
+![fecadamy](https://occc3ev3l.qnssl.com/Screen%20Shot%202016-11-14%20at%2010.35.03%20PM.png)
 
 ## License
 MIT 2016@MuxiStudio: check `LICENSE` file for detail.

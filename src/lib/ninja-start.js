@@ -124,7 +124,7 @@ module.exports = function() {
       } else {
         r = request({
           url: url,
-          headers: req.headers
+          headers: res.headers
         });
       }
 

@@ -22,9 +22,13 @@ var opn = require('opn');
 var bodyParser = require('body-parser');
 var multer = require('multer'); // v1.0.5
 var upload = multer(); // for parsing multipart/form-data
+var webpackReady = false;
+
 
 app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+  extended: true
+})); // for parsing application/x-www-form-urlencoded
 
 // modules
 var socket = require('./socket');
@@ -76,27 +80,36 @@ module.exports = function() {
           }
           res.send(returnedData)
         });
-      }else {
+      } else {
         app[method](obj.endpoint, function(req, res) {
           res.send(mock.data[obj.name])
         });
       }
     } else {
       app[method](obj.endpoint, function(req, res, next) {
-        res.render(obj.template, mock.data[obj.name])
+        if (!webpackReady) {
+          res.send("Webpack is not ready yet")
+        }else{
+          res.render(obj.template, mock.data[obj.name])
+        }
       });
     }
   })
-  
+
   if (conf.webpackFlag) {
     var config = require(process.cwd() + '/webpack.dev.config')
     var compiler = webpack(config)
-    app.use(webpackDevMiddleware(compiler, {
+    var devMiddleware = webpackDevMiddleware(compiler, {
       publicPath: config.output.publicPath,
       stats: {
         colors: true
       }
-    }))
+    })
+    app.use(devMiddleware)
+    devMiddleware.waitUntilValid(function() {
+      webpackReady = true
+      console.log('Package is in a valid state');
+    });
     app.use(webpackHotMiddleware(compiler, {
       log: console.log
     }))

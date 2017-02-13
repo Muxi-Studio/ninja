@@ -125,9 +125,14 @@ module.exports = function() {
       if (req.method === 'POST') {
         r = request.post({
           uri: url,
-          headers: req.headers,
+          headers: res.headers,
           json: req.body
         });
+
+        if(req.headers.authorization) {
+        	r.headers.authorization = req.headers.authorization;
+        };
+
       } else if (req.method === 'PUT') {
         r = request.put({
           uri: url,

@@ -24,12 +24,6 @@ var multer = require('multer'); // v1.0.5
 var upload = multer(); // for parsing multipart/form-data
 var webpackReady = false;
 
-
-// app.use(bodyParser.json()); // for parsing application/json
-// app.use(bodyParser.urlencoded({
-//   extended: true
-// })); // for parsing application/x-www-form-urlencoded
-
 // modules
 var socket = require('./socket');
 
@@ -122,29 +116,6 @@ module.exports = function() {
       //modify the url in any way you want
       var url = conf.proxyConf.origin + conf.proxyConf.route + req.url;
       req.pipe(request(url)).pipe(res);
-      // var r;
-      // if (req.method === 'POST') {
-      //   r = request.post({
-      //     uri: url,
-      //     headers: req.headers,
-      //     json: req.body
-      //   });
-
-      // } else if (req.method === 'PUT') {
-      //   r = request.put({
-      //     uri: url,
-      //     headers: req.headers,
-      //     json: req.body
-      //   });
-      // } else {
-      //   r = request({
-      //     url: url,
-      //     headers: res.headers
-      //   });
-      // }
-
-      // r.pipe(res);
-      // next();
     });
   }
 

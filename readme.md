@@ -72,6 +72,11 @@ Take a look at the `examples` folder.
 
 ## Change Log
 
+v0.5 2017-5-1
+
++ refactor proxy for bypassing CORS. 
++ all kinds of HTTP/HTTPS request are supported now.
+
 ###v0.4 2016-10-30
 
 + add body-parser for express server, fix POST proxy body data missing case 

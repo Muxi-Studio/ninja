@@ -1,5 +1,7 @@
 # Ninja
 
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/ninja_cli)
+
 Ninja powered front-end development server. 
 
 Check [this blog post](http://zxc0328.github.io/2016/07/05/ninja/) for more info about the development of Ninja.

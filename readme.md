@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/ninja_cli.svg)](https://badge.fury.io/js/ninja_cli)
 
+This branch is for Webpack 2, for Webpack 1 support please checkout 0.x version in `webpack1` branch.
+
 Ninja powered front-end development server. 
 
 Check [this blog post](http://zxc0328.github.io/2016/07/05/ninja/) for more info about the development of Ninja.

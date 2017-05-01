@@ -72,25 +72,25 @@ Take a look at the `examples` folder.
 
 ## Change Log
 
-v0.5 2017-5-1
+### v0.5 2017-5-1
 
 + refactor proxy for bypassing CORS. 
 + all kinds of HTTP/HTTPS request are supported now.
 
-###v0.4 2016-10-30
+### v0.4 2016-10-30
 
 + add body-parser for express server, fix POST proxy body data missing case 
 
-###v0.3 2016-10-28
+### v0.3 2016-10-28
 
 + add HTTP method setting for mock API 
 
-###v0.2 2016-07-13
+### v0.2 2016-07-13
 
 + add example for webpack&gulp users
 + support CSS&Javascript livereload
 
-###v0.1 2016-07-02
+### v0.1 2016-07-02
 
 + initial commit
 
@@ -109,4 +109,4 @@ v0.5 2017-5-1
 ![fecadamy](https://occc3ev3l.qnssl.com/Screen%20Shot%202016-11-14%20at%2010.35.03%20PM.png)
 
 ## License
-MIT 2016@MuxiStudio: check `LICENSE` file for detail.
+MIT 2017@MuxiStudio: check `LICENSE` file for detail.

@@ -30,6 +30,10 @@ var proxy = require('express-http-proxy');
 var socket = require('./socket');
 
 module.exports = function() {
+    if(!conf.length) {
+        console.log('Lose ninja.config file!');
+        return;
+    }
     // configure app
     app.engine('html', cons[conf.template]);
     app.set('view engine', 'html');

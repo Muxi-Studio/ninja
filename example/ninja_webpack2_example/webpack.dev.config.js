@@ -1,30 +1,33 @@
 var webpack = require('webpack');
 var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: [
-    'webpack-hot-middleware/client',
-    path.resolve(__dirname, './index.js')
-  ],
-  output: {
-    path: '/',
-    publicPath: 'http://localhost:3000/',
-    filename: 'bundle.js'
-  },
-  module: {
-    loaders: [{
-      test: /\.scss$/,
-      exclude: /node_modules/,
-      loader: 'style!css?sourceMap!sass?sourceMap&sourceComments'
-    }],
-  },
-  resolve: {
-    extensions: ['', '.js', '.scss'],
-  },
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-  ],
+    entry: [
+        'webpack-hot-middleware/client',
+        path.resolve(__dirname, './index.js')
+    ],
+    output: {
+        path: '/',
+        publicPath: 'http://localhost:3000/',
+        filename: 'bundle.js'
+    },
+    module: {
+        rules: [{
+            test: /\.scss$/,
+            exclude: /node_modules/,
+            use: [{
+                loader: "style-loader" // creates style nodes from JS strings
+            }, {
+                loader: "css-loader" // translates CSS into CommonJS
+            }, {
+                loader: "sass-loader" // compiles Sass to CSS
+            }]
+        }]
+    },
+    resolve: {
+        extensions: ['.js', '.scss'],
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
 };

@@ -1,5 +1,5 @@
-require('./scss/index.scss')
+import './scss/index.scss'
 
+import foo from "./foo"
 
-var foo = require("./foo");
 foo()

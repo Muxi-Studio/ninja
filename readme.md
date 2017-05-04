@@ -70,6 +70,25 @@ module.exports = {
     -b, --browser [item]       Set the defalut browser, defalut set to google chrome
 
 ```
+
+## Commands
+
+`ninja init <projectName> <template>`
+
+Examplle: 
+
+`ninja init my-project webpack-vue`
+
+The above command pulls the template from [slush-ninja-webpack-vue](https://github.com/Muxi-Studio/slush-ninja-webpack-vue).
+
+`ninja start`
+
+Start Ninja dev server!
+
+## Templates
+
+- [webpack-vue](https://github.com/Muxi-Studio/slush-ninja-webpack-vue)  - A full-featured Webpack2 + Vue2
+
 ## Examples
 
 Take a look at the `examples` folder.

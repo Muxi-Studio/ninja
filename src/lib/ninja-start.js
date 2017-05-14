@@ -30,8 +30,8 @@ var proxy = require('express-http-proxy');
 var socket = require('./socket');
 
 module.exports = function() {
-    if(!conf.length) {
-        console.log('Lose ninja.config file!');
+    if(!Object.keys(conf).length) {
+        logger.fatal('ninja.config file is required!');
         return;
     }
     // configure app

@@ -27,7 +27,7 @@ module.exports = function() {
 	const template = `slush-${name}`;
 
 	if (!projectName) {
-		logger.fatal('project name is required!');
+		logger.fatal('Project name is required!');
 	}
 
 	shelljs.mkdir(projectName);

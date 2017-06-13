@@ -97,7 +97,11 @@ module.exports = function() {
     })
 
     if (conf.webpackFlag) {
-        var config = require(process.cwd() + '/webpack.dev.config')
+        if (conf.webpackConfigPath){
+            var config = require(conf.webpackConfigPath)
+        }else{
+            var config = require(process.cwd() + '/webpack.dev.config')
+        }
         var compiler = webpack(config)
         var devMiddleware = webpackDevMiddleware(compiler, {
             publicPath: config.output.publicPath,

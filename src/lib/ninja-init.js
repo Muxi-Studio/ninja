@@ -16,7 +16,6 @@ const program = require('commander').parse(process.argv);
 const shelljs = require('shelljs');
 const exec = require('../util/exec');
 const logger = require('../util/logger');
-const conf = require('../util/config');
 
 
 module.exports = function() {

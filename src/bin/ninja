@@ -10,6 +10,17 @@ program
   .version(require('../../package.json').version);
 
 /**
+ * ninja init
+ */
+program
+  .command('init')
+  .alias('i')
+  .description('Scaffolding webpack or gulp based project')
+  .action(function(){
+       ninjaInit();
+  })
+
+/**
  * ninja start
  */
 program
@@ -20,16 +31,7 @@ program
     	ninjaStart();
   })
 
-/**
- * ninja init
- */
-program
-  .command('init')
-  .alias('i')
-  .description('Scaffolding webpack or gulp based project')
-  .action(function(){
-    	 ninjaInit();
-  })
+
 
 program.parse(process.argv);
 

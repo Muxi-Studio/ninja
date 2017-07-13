@@ -16,7 +16,6 @@ var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpackHotMiddleware = require('webpack-hot-middleware');
 var webpack = require("webpack");
 var logger = require("../util/logger");
-var conf = require('../util/config');
 var compileRoute = require('../util/compileRoute');
 var chalk = require("chalk");
 var opn = require('opn');
@@ -30,6 +29,8 @@ var proxy = require('express-http-proxy');
 var socket = require('./socket');
 
 module.exports = function() {
+    var conf = require('../util/config');
+
     if(!Object.keys(conf).length) {
         logger.fatal('ninja.config file is required!');
         return;
